@@ -4,14 +4,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Validace uživatelského jména a hesla
-    if ($username === $_SESSION['username'] && $password === $_SESSION['password']) {
-        $_SESSION['username'] = $username;
-        header('Location: index.php');
-        exit();
-    } else {
-        $error = "Nesprávné uživatelské jméno nebo heslo.";
+    // Načtení uživatelských dat ze souboru
+    $users = file('users.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($users as $user) {
+        list($storedUsername, $storedPassword) = explode(':', $user);
+        if ($username === $storedUsername && $password === $storedPassword) {
+            $_SESSION['username'] = $username;
+            header('Location: index.php');
+            exit();
+        }
     }
+    $error = "Nesprávné uživatelské jméno nebo heslo.";
 }
 ?>
 <!DOCTYPE html>
