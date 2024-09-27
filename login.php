@@ -31,5 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="error"><?php echo $error; ?></p>
         <?php endif; ?>
     </form>
+    <p>Nemáte účet? <a href="register.php">Zaregistrujte se</a></p>
 </body>
 </html>
