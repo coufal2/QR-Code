@@ -5,13 +5,6 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-<?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header('Location: login.php');
-    exit();
-}
-
 // Odkaz pro QR kód
 $qr_code_url = "http://s-coufal2-24.dev.spsejecna.net/QR-Code/index.php?user=" . urlencode($_SESSION['username']);
 $expiry_time = time() + 300; // 5 minut platnost
