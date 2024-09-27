@@ -3,8 +3,9 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    // Zde můžete přidat validaci a přihlášení uživatele
-    if ($username === $_SESSION['username'] && $password === 'your_password') { // Nahraďte 'your_password' skutečným heslem
+
+    // Validace uživatelského jména a hesla
+    if ($username === $_SESSION['username'] && $password === $_SESSION['password']) {
         $_SESSION['username'] = $username;
         header('Location: index.php');
         exit();
