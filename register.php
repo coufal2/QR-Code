@@ -22,6 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="username" placeholder="Zvolte uživatelské jméno" required>
         <button type="submit">Registrovat</button>
     </form>
+    <p>Máte účet? <a href="login.php">Přihlaste se</a></p>
 </body>
 </html>
-
