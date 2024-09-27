@@ -4,12 +4,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Uložení uživatelského jména a hesla do session (v reálném systému byste použili databázi)
-    $_SESSION['username'] = $username;
-    $_SESSION['password'] = $password;
+    // Uložení uživatelského jména a hesla do souboru
+    $userData = "$username:$password\n";
+    file_put_contents('users.txt', $userData, FILE_APPEND);
 
-    // Přesměrování na přihlašovací stránku
-    header('Location: login.php');
+    // Uložení uživatelského jména do session pro generování QR kódu
+    $_SESSION['username'] = $username;
+
+    // Přesměrování na generaci QR kódu
+    header('Location: generate_qr.php');
     exit();
 }
 ?>
