@@ -7,8 +7,9 @@ if (!isset($_SESSION['username'])) {
 
 // Odkaz pro QR kód
 $username = $_SESSION['username'];
-$password = $_POST['password'] ?? ''; // Získání hesla, pokud je k dispozici
-$qr_code_url = "http://s-coufal2-24.dev.spsejecna.net/QR-Code/index.php?username=" . urlencode($username) . "&password=" . urlencode($password);
+// Přístup k heslu je dostupný pouze pro registraci, takže ho nezískáváme zde
+$qr_code_url = "http://s-coufal2-24.dev.spsejecna.net/QR-Code/process_qr.php?username=" . urlencode($username) . "&password=" . urlencode($_SESSION['password']);
+
 ?>
 <!DOCTYPE html>
 <html lang="cs">
