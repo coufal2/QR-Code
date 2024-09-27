@@ -39,4 +39,3 @@ $expiry_time = time() + 300; // 5 minut platnost
     </script>
 </body>
 </html>
-
