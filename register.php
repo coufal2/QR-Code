@@ -17,3 +17,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 ?>
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, content="initial-scale=1.0">
+    <title>Přihlášení</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Přihlášení</h1>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Uživatelské jméno" required>
+        <input type="password" name="password" placeholder="Heslo" required>
+        <button type="submit">Přihlásit se</button>
+        <?php if (isset($error)): ?>
+            <p class="error"><?php echo $error; ?></p>
+        <?php endif; ?>
+    </form>
+    <p>Nemáte účet? <a href="register.php">Zaregistrujte se</a></p>
+</body>
+</html>
