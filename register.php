@@ -8,29 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userData = "$username:$password\n";
     file_put_contents('users.txt', $userData, FILE_APPEND);
 
-    // Uložení uživatelského jména do session pro generování QR kódu
+    // Uložení uživatelského jména a hesla do session pro generování QR kódu
     $_SESSION['username'] = $username;
+    $_SESSION['password'] = $password; // Uložení hesla do session
 
     // Přesměrování na generaci QR kódu
     header('Location: generate_qr.php');
     exit();
 }
 ?>
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, content="initial-scale=1.0">
-    <title>Registrace</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Registrace</h1>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Zvolte uživatelské jméno" required>
-        <input type="password" name="password" placeholder="Zvolte heslo" required>
-        <button type="submit">Registrovat</button>
-    </form>
-    <p>Máte účet? <a href="login.php">Přihlaste se</a></p>
-</body>
-</html>
