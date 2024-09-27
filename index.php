@@ -14,7 +14,9 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Vítejte, <?php echo $_SESSION['username']; ?>!</h1>
-    <a href="logout.php">Odhlásit se</a>
+    <div class="welcome">
+        <h1>Vítejte, <?php echo $_SESSION['username']; ?>!</h1>
+        <a href="logout.php">Odhlásit se</a>
+    </div>
 </body>
 </html>
