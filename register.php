@@ -2,9 +2,14 @@
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
-    // Uložení uživatelského jména do databáze nebo souboru
+    $password = $_POST['password'];
+
+    // Uložení uživatelského jména a hesla do session (v reálném systému byste použili databázi)
     $_SESSION['username'] = $username;
-    header('Location: generate_qr.php');
+    $_SESSION['password'] = $password;
+
+    // Přesměrování na přihlašovací stránku
+    header('Location: login.php');
     exit();
 }
 ?>
@@ -20,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Registrace</h1>
     <form method="POST">
         <input type="text" name="username" placeholder="Zvolte uživatelské jméno" required>
+        <input type="password" name="password" placeholder="Zvolte heslo" required>
         <button type="submit">Registrovat</button>
     </form>
     <p>Máte účet? <a href="login.php">Přihlaste se</a></p>
