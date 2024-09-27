@@ -4,9 +4,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     // Zde můžete přidat validaci a přihlášení uživatele
-    $_SESSION['username'] = $username;
-    header('Location: index.php');
-    exit();
+    if ($username === $_SESSION['username'] && $password === 'your_password') { // Nahraďte 'your_password' skutečným heslem
+        $_SESSION['username'] = $username;
+        header('Location: index.php');
+        exit();
+    } else {
+        $error = "Nesprávné uživatelské jméno nebo heslo.";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="username" placeholder="Uživatelské jméno" required>
         <input type="password" name="password" placeholder="Heslo" required>
         <button type="submit">Přihlásit se</button>
+        <?php if (isset($error)): ?>
+            <p class="error"><?php echo $error; ?></p>
+        <?php endif; ?>
     </form>
-    <a href="register.php">Registrovat se</a>
 </body>
 </html>
