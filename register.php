@@ -2,7 +2,7 @@
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
-    // Zde můžete přidat validaci a ukládání uživatelského jména do databáze
+    // Uložení uživatelského jména do databáze nebo souboru
     $_SESSION['username'] = $username;
     header('Location: generate_qr.php');
     exit();
@@ -24,3 +24,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </body>
 </html>
+
